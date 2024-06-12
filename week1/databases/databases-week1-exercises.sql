@@ -4,28 +4,46 @@ FROM country
 WHERE Population > 8000000;
 
 -- 2. What are the names of countries that have “land” in their names?
-SELECT ...
+SELECT name 
+FROM country 
+WHERE name like '%land%';
 
 -- 3. What are the names of the cities with population in between 500,000 and 1 million?
-SELECT ...
+SELECT name, Population 
+FROM city 
+Where Population > 500000 and Population < 1000000;
 
 -- 4. What's the name of all the countries on the continent ‘Europe’?
-SELECT ...
+SELECT name 
+FROM country 
+WHERE Continent = 'Europe';
 
 -- 5. What are the names of all the cities in the Netherlands?
-SELECT ...
+SELECT city.name 
+FROM city
+JOIN country on city.CountryCode = country.Code  
+WHERE country.name = 'Netherlands';
 
 -- 6. What is the population of Rotterdam?
-SELECT ...
+SELECT name, population 
+FROM city 
+WHERE name = 'Rotterdam';
 
 -- 7. Which countries don't have a head of state? Hint: looks for NULL and '' values
-SELECT ...
+SELECT name 
+FROM country 
+WHERE HeadOfState is NULL;
 
 -- 8. What's the top 10 least populated cities? Return the name and population
-SELECT ...
+SELECT name, Population
+FROM city 
+ORDER BY Population desc 
+LIMIT 10;
 
 -- 9. What countries in Africa have the local name the same as their common name?
-SELECT ...
+SELECT name 
+FROM country 
+WHERE Continent = 'africa' and name = LocalName;
 
 -- 10. What countries have Spanish as official language? Hint: see countrylanguage table
 SELECT ...
